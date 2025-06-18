@@ -1,7 +1,7 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { createServerSupabaseClient } from "@/utils/supabase/serverRouteHandler";
-import { ActionResult, Alumno } from "./types/alumnos";
+import { ActionResult, Alumno } from "../types/alumnos/alumnos";
 
 export async function addMemberAction(formData: FormData): Promise<ActionResult> {
   const fullName = formData.get("full_name") as string;
@@ -34,7 +34,6 @@ export async function addMemberAction(formData: FormData): Promise<ActionResult>
 export async function getMembers():Promise<Alumno[]> {
   const { userId } = await auth();
   if (!userId) return [];
-  console.log(userId)
   const supabase = await createServerSupabaseClient();
   const { data, error } = await supabase
     .from("alumnos")
