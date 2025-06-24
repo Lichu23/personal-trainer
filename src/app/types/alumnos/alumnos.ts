@@ -20,3 +20,56 @@ export interface ActionResult {
   error?: string;
   data?: Alumno;
 }
+
+export interface Rutina {
+  id: number;
+  created_at: string;
+  alumno_id: number; // Foreign key a Alumno.id
+  nombre: string;
+  tipo: string;
+  duracion_min: number;
+  fecha_inicio: string; // o Date
+  fecha_fin: string; // o Date
+}
+
+export interface EjercicioRutina {
+  id: number;
+  created_at: string;
+  nombre: string; // Nombre del ejercicio
+  semana: number;
+  repeticiones: string; // "3x10", "4x8-12"
+  carga: string; // "80kg", "RM"
+  rir: string; // RIR (Reps in Reserve)
+  rutina_id: number; // Foreign key a Rutina.id
+}
+
+export interface Objetivo {
+  id: number;
+  alumno_id: number; // Foreign key a Alumno.id
+  tipo: string; // "pérdida de peso", "ganancia muscular"
+  completado: string; // "si", "no"
+  descripcion: string;
+  fecha_creacion: string; // o Date
+  fecha_complecion: string; // o Date
+  created_at: string;
+}
+
+export interface PlanNutricional {
+  id: number;
+  created_at: string;
+  alumno_id: number; // Foreign key a Alumno.id
+  calorias: number;
+  proteinas: number;
+  carbohidratos: number;
+  grasas: number;
+  descripcion: string;
+}
+
+export interface VolumenSemanal {
+  id: number;
+  created_at: string;
+  alumno_id: number; // Foreign key a Alumno.id
+  rutina_id: number; // Foreign key a Rutina.id
+  semana: number;
+  volumen: number; // o string, dependiendo del tipo de `numeric`
+}
