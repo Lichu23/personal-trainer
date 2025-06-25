@@ -1,3 +1,4 @@
+import CreateNewMemberForm from "@/components/DialogForm/components/CreateNewMemberForm/CreateNewMemberForm";
 import { getMembers } from "../(home)/actions";
 import DialogForm from "../../components/DialogForm/DialogForm";
 import AlumnosDetails from "./components/AlumnosDetails/AlumnosDetails";
@@ -16,7 +17,9 @@ export default async function DashboardPage() {
               Gestión de alumnos, rutinas y planes nutricionales
             </h2>
           </div>
-          <DialogForm />
+          <DialogForm title="Crear nuevo alumno" label="+ Crear Alumno">
+            <CreateNewMemberForm/>
+          </DialogForm>
         </div>
 
         <div>

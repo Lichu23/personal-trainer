@@ -1,6 +1,4 @@
-"use client"
-import React from "react";
-import { useState } from "react";
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,23 +7,29 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import CreateNewMemberForm from "./components/CreateNewMemberForm/CreateNewMemberForm";
+import { ReactNode, useState } from "react";
 
-export default function DialogForm() {
+interface Props {
+  children: ReactNode;
+  label: string;
+  title: string;
+}
+
+export default function DialogForm({ label, title, children }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="hover:cursor-pointer text-xl p-5" variant="default" >
-          + Crear Alumno
+        <Button className="hover:cursor-pointer text-md p-5" variant="default">
+          {label}
         </Button>
       </DialogTrigger>
       <DialogContent className="min-w-3xl">
         <DialogHeader>
-          <DialogTitle className="font-bold text-xl">Crear nuevo alumno</DialogTitle>
+          <DialogTitle className="font-bold text-md">{title}</DialogTitle>
         </DialogHeader>
-        <CreateNewMemberForm />  
+        {children}
       </DialogContent>
     </Dialog>
   );

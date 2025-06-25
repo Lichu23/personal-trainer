@@ -30,7 +30,7 @@ export interface Rutina {
   duracion_min: number;
   fecha_inicio: string; // o Date
   fecha_fin: string; // o Date
-}
+}   
 
 export interface EjercicioRutina {
   id: number;
