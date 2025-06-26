@@ -15,10 +15,10 @@ export interface Alumno {
   estado: string;
 }
 
-export interface ActionResult {
+export interface ActionResult<T> {
   success?: boolean;
   error?: string;
-  data?: Alumno;
+  data?: T;
 }
 
 export interface Rutina {
@@ -30,17 +30,25 @@ export interface Rutina {
   duracion_min: number;
   fecha_inicio: string; // o Date
   fecha_fin: string; // o Date
-}   
+}
 
 export interface EjercicioRutina {
   id: number;
   created_at: string;
   nombre: string; // Nombre del ejercicio
-  semana: number;
-  repeticiones: string; // "3x10", "4x8-12"
-  carga: string; // "80kg", "RM"
-  rir: string; // RIR (Reps in Reserve)
   rutina_id: number; // Foreign key a Rutina.id
+}
+
+export interface DetalleEjercicioSemanal {
+  id: number;
+  created_at: string;
+  ejercicio_rutina_id: number; // Foreign key a EjercicioRutina.id
+  semana_numero: number;
+  rir: string;
+  peso_kg: number | null;
+  series: number;
+  repeticiones: string;
+  descripcion: string | null;
 }
 
 export interface Objetivo {
@@ -49,8 +57,8 @@ export interface Objetivo {
   tipo: string; // "pérdida de peso", "ganancia muscular"
   completado: string; // "si", "no"
   descripcion: string;
-  fecha_creacion: string; // o Date
-  fecha_complecion: string; // o Date
+  fecha_creacion: string | Date;
+  fecha_complecion: string | Date;
   created_at: string;
 }
 

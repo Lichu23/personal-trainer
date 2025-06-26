@@ -1,6 +1,6 @@
 import { getMembers } from "./actions";
 import EmptyMembersPage from "./components/EmptyMembersPage/EmptyMembersPage";
-import DashboardPage from "../dashboard/page";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const alumnos = await getMembers();
@@ -8,6 +8,6 @@ export default async function Home() {
   if (alumnos.length === 0) {
     return <EmptyMembersPage />;
   } else {
-    return <DashboardPage />;
+    return redirect('/dashboard')
   }
 }

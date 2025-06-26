@@ -6,18 +6,16 @@ import { ChevronLeft, ChevronRight, User } from "lucide-react";
 import { useState } from "react";
 import MemberHideList from "./MemberHideList";
 import { MemberListHorizontal } from "./MemberListHorizontal";
+import { useRouter } from "next/navigation";
 
 interface Props {
   alumnos: Alumno[];
 }
 export default function MemberListCard({ alumnos }: Props) {
   const [showAlumnosList, setShowAlumnosList] = useState(true);
-  const [alumnoSeleccionado, setAlumnoSeleccionado] = useState(alumnos[0]);
-
-  const handleSelectAlumno = (alumno: Alumno) => setAlumnoSeleccionado(alumno);
   const handleShowList = () => setShowAlumnosList(true);
   const handleHideList = () => setShowAlumnosList(false);
-
+  const router = useRouter();
   return (
     <div className="w-full">
       <Card className="h-full">
@@ -25,8 +23,11 @@ export default function MemberListCard({ alumnos }: Props) {
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <User className="h-5 w-5" />
+
               <p>Lista de Alumnos</p>
             </div>
+            <Button onClick={() => router.refresh()}>Refresh Table</Button>
+
             {showAlumnosList ? (
               <Button
                 variant="ghost"
@@ -51,18 +52,9 @@ export default function MemberListCard({ alumnos }: Props) {
           </CardTitle>
         </CardHeader>
         {showAlumnosList ? (
-          <MemberListHorizontal
-            alumnoSeleccionado={alumnoSeleccionado}
-            onSelectAlumno={handleSelectAlumno}
-            alumnos={alumnos}
-          />
+          <MemberListHorizontal alumnos={alumnos} />
         ) : (
-          <MemberHideList
-            alumnos={alumnos}
-            alumnoSeleccionado={alumnoSeleccionado}
-            onSelectAlumno={handleSelectAlumno}
-            onShowList={handleShowList}
-          />
+          <MemberHideList alumnos={alumnos} />
         )}
       </Card>
     </div>

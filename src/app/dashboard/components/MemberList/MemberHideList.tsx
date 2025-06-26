@@ -1,19 +1,14 @@
+import { useAlumno } from "@/app/context/AlumnoContext";
 import { Alumno } from "@/app/types/alumnos/alumnos";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { CardContent } from "@/components/ui/card";
 
 interface Props {
   alumnos: Alumno[];
-  alumnoSeleccionado: Alumno;
-  onSelectAlumno: (alumno: Alumno) => void;
-  onShowList: () => void;
 }
 
-export default function MemberHideList({
-  alumnos,
-  alumnoSeleccionado,
-  onSelectAlumno,
-}: Props) {
+export default function MemberHideList({ alumnos }: Props) {
+  const { alumnoSeleccionado, setAlumnoSeleccionado } = useAlumno();
   return (
     <CardContent className="h-full flex flex-col shad">
       <div className="flex flex-row items-center gap-4 overflow-x-auto p-2 w-full">
@@ -25,13 +20,13 @@ export default function MemberHideList({
               w-12 h-12
               cursor-pointer
               ${
-                alumnoSeleccionado.id === alumno.id
+                alumnoSeleccionado?.id === alumno.id
                   ? "ring-2 ring-black"
                   : "hover:bg-gray-50"
               }
             `}
-            onClick={() => onSelectAlumno(alumno)}
-          > 
+            onClick={() => setAlumnoSeleccionado(alumno)}
+          >
             <AvatarFallback className="text-xs">
               {alumno.nombre
                 .split(" ")

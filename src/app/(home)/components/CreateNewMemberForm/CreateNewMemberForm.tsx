@@ -18,7 +18,7 @@ export default function CreateNewMemberForm() {
     const result = await addMemberAction(formData);
     if (result?.error) setMsg("Error: " + result.error);
     else {
-      setMsg("¡Usuario creado en Supabase!");
+      setMsg("¡Usuario creado correctamente!");
       router.refresh();
     }
   }
@@ -134,7 +134,7 @@ export default function CreateNewMemberForm() {
         >
           Crear usuario
         </Button>
-        <div>{msg}</div>
+        <div className="text-green-400 semi-bold text-center text-xl">{msg}</div>
       </div>
     </form>
   );

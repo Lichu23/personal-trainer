@@ -1,7 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-// Componente para un solo formulario de ejercicio
 export function ExerciseForm({ index }: { index: number }) {
   return (
     <div className="border p-4 rounded-md shadow-sm mb-4">
@@ -56,7 +55,7 @@ export function ExerciseForm({ index }: { index: number }) {
         </div>
       </div>
 
-      <Label>Peso (kg) - Opcional</Label>
+      <Label>Peso (kg)</Label>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
         <div className="flex flex-col gap-2">
           <Input
@@ -171,42 +170,6 @@ export function ExerciseForm({ index }: { index: number }) {
             placeholder="reps"
             className="border p-2 rounded"
             type="number"
-          />
-          <Label className="text-sm text-gray-500">Semana 4</Label>
-        </div>
-      </div>
-
-      <Label>Descripción por semana</Label>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="flex flex-col gap-2">
-          <Input
-            name={`desc_sem1_${index}`}
-            placeholder="ej: 3x10 - 50Kg"
-            className="border p-2 rounded"
-          />
-          <Label className="text-sm text-gray-500">Semana 1</Label>
-        </div>
-        <div className="flex flex-col gap-2">
-          <Input
-            name={`desc_sem2_${index}`}
-            placeholder="ej: 3x10 - 50Kg"
-            className="border p-2 rounded"
-          />
-          <Label className="text-sm text-gray-500">Semana 2</Label>
-        </div>
-        <div className="flex flex-col gap-2">
-          <Input
-            name={`desc_sem3_${index}`}
-            placeholder="ej: 3x10 - 50Kg"
-            className="border p-2 rounded"
-          />
-          <Label className="text-sm text-gray-500">Semana 3</Label>
-        </div>
-        <div className="flex flex-col gap-2">
-          <Input
-            name={`desc_sem4_${index}`}
-            placeholder="ej: 3x10 - 50Kg"
-            className="border p-2 rounded"
           />
           <Label className="text-sm text-gray-500">Semana 4</Label>
         </div>

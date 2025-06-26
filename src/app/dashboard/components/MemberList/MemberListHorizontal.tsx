@@ -1,3 +1,4 @@
+import { useAlumno } from "@/app/context/AlumnoContext";
 import { Alumno } from "@/app/types/alumnos/alumnos";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -5,27 +6,22 @@ import { calculateIMC } from "@/utils/imc";
 import { CalendarDays, TrendingUp } from "lucide-react";
 interface Props {
   alumnos: Alumno[];
-  onSelectAlumno:(alumno: Alumno) => void;
-
-  alumnoSeleccionado: Alumno;
 }
 
-export function MemberListHorizontal({
-  alumnos,
-  alumnoSeleccionado,
-  onSelectAlumno,
-}: Props) {
+export function MemberListHorizontal({ alumnos }: Props) {
+  const { alumnoSeleccionado, setAlumnoSeleccionado } = useAlumno();
+  
   return (
     <div className="flex gap-4 overflow-x-auto p-3">
       {alumnos.map((alumno) => (
         <div
           key={alumno.id}
           className={`min-w-[260px] max-w-xs bg-white rounded-lg shadow border p-4 flex-shrink-0 cursor-pointer transition-colors ${
-            alumnoSeleccionado.id === alumno.id
+            alumnoSeleccionado?.id === alumno.id
               ? "ring-2 ring-black"
               : "hover:bg-gray-50"
           }`}
-          onClick={() => onSelectAlumno(alumno)}
+          onClick={() => setAlumnoSeleccionado(alumno)}
         >
           <div className="flex items-center gap-3">
             <Avatar>

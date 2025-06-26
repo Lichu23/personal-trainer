@@ -8,8 +8,7 @@ import {
   UserButton,
 } from '@clerk/nextjs'
 import { Outfit } from 'next/font/google'
-import "../globals.css"
-
+import './globals.css';
 
 const outfit = Outfit({
   subsets: ["latin"],
