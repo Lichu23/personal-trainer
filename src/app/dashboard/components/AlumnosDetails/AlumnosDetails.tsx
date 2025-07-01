@@ -5,6 +5,7 @@ import DialogForm from "@/components/DialogForm/DialogForm";
 import { Avatar } from "@/components/ui/avatar";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
+import { InformationTabs } from "../InformationTabs/InformationTabs";
 
 export default function AlumnosDetails() {
   const {alumnoSeleccionado} = useAlumno()
@@ -32,6 +33,10 @@ export default function AlumnosDetails() {
           </DialogForm>
         </div>
       </CardHeader>
+
+      <Card className="p-2">
+       <InformationTabs/>
+      </Card>
     </Card>
   );
 }
